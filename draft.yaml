@@ -1,0 +1,19 @@
+models:
+  Post:
+    title: string
+    content: longtext
+    published_at: nullable timestamp
+    user_id: id foreign:users
+    timestamps
+  Comment:
+    content: longtext
+    status: boolean
+    post_id: id foreign:posts
+    user_id: id foreign:users
+    timestamps
+    
+controllers:
+  Post:
+    index:
+      query: all
+      render: posts.index with:posts

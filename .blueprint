@@ -1,0 +1,17 @@
+created:
+    - app/Http/Controllers/PostController.php
+    - database/factories/PostFactory.php
+    - database/factories/CommentFactory.php
+    - database/migrations/2022_11_29_043106_create_posts_table.php
+    - database/migrations/2022_11_29_043107_create_comments_table.php
+    - app/Models/Post.php
+    - app/Models/Comment.php
+    - tests/Feature/Http/Controllers/PostControllerTest.php
+updated:
+    - routes/web.php
+skipped:
+    - resources/views/posts/index.blade.php
+models:
+    User: { name: string, email: string, timestamps: timestamps, relationships: { hasMany: 'Post, Comment' } }
+    Post: { title: string, content: longtext, published_at: 'nullable timestamp', user_id: 'id foreign:users', timestamps: timestamps }
+    Comment: { content: longtext, status: boolean, post_id: 'id foreign:posts', user_id: 'id foreign:users', timestamps: timestamps }
